@@ -46,8 +46,9 @@ getWage() const{
 
 std::vector<int>
 getHits(vector<int> & _hits){
+    //TODO: USAR O TOKENIZADOR AQUI??
     for(int i = 0; i < m_spots.size()){
-        
+
     }
 }
 
