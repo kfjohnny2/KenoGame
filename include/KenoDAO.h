@@ -1,19 +1,21 @@
-#ifndef _KENO_BET_H_
-#define _KENO_BET_H_
 
 #include <vector>
 #include <cstddef>
 #include <algorithm>
 
+#ifndef _KENO_BET_H_
+#define _KENO_BET_H_
 
 class KenoBet{
 	public:
-		explicit KenoBet( unsigned int _maxNumSpots = 15): m_maxSpots( _ _maxNumSpots);
+		explicit KenoBet( unsigned int _maxNumSpots = 15){
+			m_maxSpots = _maxNumSpots;
+		}
 		bool addNumber(int _spot);
 		bool setWage(float _wage);
 		void reset(void);
 		float getWage( void ) const;
-		size_t numChosen(void ) const;
+		std::size_t numChosen(void ) const;
 		std::vector<int> getHits(std::vector<int> & _hits) const;
 		std::vector<int> getSpots( void ) const;
 	private:

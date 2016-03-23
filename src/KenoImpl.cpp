@@ -3,17 +3,16 @@
 #include "KenoDAO.h"
 
 using namespace std;
-
 //TODO: CONSTRUTOR
-explicit
-KenoBet(unsigned int  _maxNumSpots = 15, vector<int> _spots,  float _wage){
-    m_spots = _spots;
-    m_wage = _wage;
-    m_maxSpots = _maxNumSpots;
-}
+// explicit
+// KenoBet(unsigned int _maxNumSpots, vector<int> _spots,  float _wage){
+//     m_spots = _spots;
+//     m_wage = _wage;
+//     m_maxSpots = _maxNumSpots;
+// }
 
 bool
-addNumber( int _spot){
+KenoBet::addNumber( int _spot){
     if( std::find(m_spots.begin(), m_spots.end(), _spot) != m_spots.end()){
         m_spots.insert(m_spots.end(), _spot);
         return true;
@@ -23,7 +22,7 @@ addNumber( int _spot){
 }
 
 bool
-setWage( float _wage){
+KenoBet::setWage( float _wage){
     if(_wage > 0){
         m_wage = _wage;
         return true;
@@ -33,23 +32,24 @@ setWage( float _wage){
 }
 
 void
-reset( void ){
+KenoBet::reset( void ){
     m_spots.clear();
     m_wage = 0;
 }
 
 float
-getWage() const{
+KenoBet::getWage() const{
     return m_wage;
 }
 
+std::size_t
+KenoBet::numChosen() const{
+    return m_spots.size();
+}
 
 std::vector<int>
-getHits(vector<int> & _hits){
+KenoBet::getHits(vector<int> & _hits) const{
     //TODO: USAR O TOKENIZADOR AQUI??
-    for(int i = 0; i < m_spots.size()){
-
-    }
 }
 
 
