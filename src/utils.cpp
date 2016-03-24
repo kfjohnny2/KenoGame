@@ -21,10 +21,18 @@ enum DataEnum: int16_t
     SPOTS
 };
 
+/**
+ * @brief Method that will receive the file from the command line.
+ * @details That method, will construct the KenoBet class with the data from the file read,
+ * like the number of rounds, the bets and the wage.
+ *
+ * @param fileName Filename that will be read.
+ * @return KenoBet The Keno Object with the data from the file read.
+ */
 KenoBet
-tokenization(string a){
+tokenization(string fileName){
     std::string token;
-    std::ifstream file(a);
+    std::ifstream file(fileName);
     std::vector<int> m_spots;
     float spots = 0;
     float aposta=0;
@@ -66,6 +74,13 @@ tokenization(string a){
     return keno;
 }
 
+/**
+ * @brief Method that is used for sort the vector with 20 random numbers.
+ *
+ * @param v Vector that will be sorted.
+ * @param left Left side of the vector.
+ * @param right Most right side of the vector.
+ */
 void quickSort(std::vector<int>& v, int left, int right) {
       int i = left, j = right;
       int tmp;

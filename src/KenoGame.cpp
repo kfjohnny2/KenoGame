@@ -102,7 +102,9 @@ int main(int argc, char *argv[]){
     //      'hits' = 'draw' interseção com 'spots'
     }
 
-
+    vHits.clear();
+    kenoNumbers.clear();
+    betPyramid.clear();
 	//5) Calcular o premio com base na quantidade de hits.
 
 	// char str[] = " - dasd - asdasd";
