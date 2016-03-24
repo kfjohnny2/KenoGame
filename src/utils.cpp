@@ -30,9 +30,9 @@ enum DataEnum: int16_t
  * @return KenoBet The Keno Object with the data from the file read.
  */
 KenoBet
-tokenization(string fileName){
+tokenization(string a){
     std::string token;
-    std::ifstream file(fileName);
+    std::ifstream file(a);
     std::vector<int> m_spots;
     float spots = 0;
     float aposta=0;
@@ -43,12 +43,17 @@ tokenization(string fileName){
     while(line >> token) {
        if (cont == DataEnum::BET){
        aposta = atoi(token.c_str());
+        if (aposta == 0)
+            cont --;
        }
        if (cont == DataEnum::ROUNDS){
        rounds = atoi(token.c_str());
+       if (rounds == 0)
+            cont --;
        }
        if (cont == DataEnum::SPOTS){
        spots = atoi(token.c_str());
+       if ((spots != 0) && (spots>0) && (spots<=80))
        m_spots.insert(m_spots.begin(), spots);
        }
       // cout << "token: " << token << endl;
@@ -66,7 +71,7 @@ tokenization(string fileName){
     /*INIT KENOBET CLASS*/
     KenoBet keno(m_spots.size(), rounds);
     keno.setWage(aposta);
-    for(unsigned int i =0; i<m_spots.size() ; i++){
+    for(int i =0; i<m_spots.size() ; i++){
 
         keno.addNumber(m_spots[i]);
     }
@@ -105,4 +110,13 @@ void quickSort(std::vector<int>& v, int left, int right) {
       if (i < right)
             quickSort(v, i, right);
 
+}
+
+void printArray(std::vector<int> v, unsigned int sz){
+    cout << "[";
+    for (unsigned int i = 0; i < sz; ++i)
+    {
+        cout << v[i] << " ";
+    }
+    cout<< "]" << endl;
 }

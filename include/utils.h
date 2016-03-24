@@ -17,4 +17,6 @@ KenoBet tokenization(string );
 
 void quickSort(std::vector<int>& , int, int );
 
+void printArray(std::vector<int> v, unsigned int sz);
+
 #endif
