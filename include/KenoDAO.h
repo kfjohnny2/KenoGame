@@ -8,8 +8,9 @@
 
 class KenoBet{
 	public:
-		explicit KenoBet( unsigned int _maxNumSpots = 15){
+		explicit KenoBet( unsigned int _maxNumSpots = 15, unsigned int _rounds = 1){
 			m_maxSpots = _maxNumSpots;
+			m_rounds = _rounds;
 		}
 		bool addNumber(int _spot);
 		bool setWage(float _wage);
@@ -18,10 +19,12 @@ class KenoBet{
 		std::size_t numChosen(void ) const;
 		std::vector<int> getHits(std::vector<int> & _hits) const;
 		std::vector<int> getSpots( void ) const;
+		int getRounds(void) const;
 	private:
 		std::vector<int> m_spots;
 		float m_wage;
 		unsigned int m_maxSpots;
+		int m_rounds;
 };
 
 #endif

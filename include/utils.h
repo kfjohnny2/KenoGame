@@ -15,4 +15,6 @@ using namespace std;
 
 KenoBet tokenization(string );
 
+void quickSort(std::vector<int>& , int, int );
+
 #endif

@@ -50,12 +50,26 @@ KenoBet::numChosen() const{
 
 std::vector<int>
 KenoBet::getHits(vector<int> & _hits) const{
-    //TODO: USAR O TOKENIZADOR AQUI??
+
+    std::vector<int> actual_hits;
+    for (int i = 0; i < m_spots.size(); ++i){
+        for (int j = 0; j < _hits.size(); ++j){
+            if(m_spots[i] == _hits[j]){
+                actual_hits.push_back(m_spots[i]);
+            }
+        }
+    }
+    return actual_hits;
 }
 
 std::vector<int>
 KenoBet::getSpots(void) const{
     return m_spots;
+}
+
+int
+KenoBet::getRounds(void) const{
+    return m_rounds;
 }
 
 

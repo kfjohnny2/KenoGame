@@ -56,7 +56,7 @@ tokenization(string a){
     file.close();
 
     /*INIT KENOBET CLASS*/
-    KenoBet keno(rounds);
+    KenoBet keno(m_spots.size(), rounds);
     keno.setWage(aposta);
     for(int i =0; i<m_spots.size() ; i++){
 
@@ -66,3 +66,28 @@ tokenization(string a){
     return keno;
 }
 
+void quickSort(std::vector<int>& v, int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int pivot = v[(left + right) / 2];
+      /* partition */
+      while (i <= j) {
+            while (v[i] < pivot)
+                  i++;
+            while (v[j] > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = v[i];
+                  v[i] = v[j];
+                  v[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+      /* recursion */
+      if (left < j)
+            quickSort(v, left, j);
+      if (i < right)
+            quickSort(v, i, right);
+
+}
