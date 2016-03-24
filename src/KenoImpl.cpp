@@ -45,7 +45,7 @@ std::vector<int>
 KenoBet::getHits(vector<int> & _hits) const{
 
     std::vector<int> actual_hits;
-    for (int i = 0; i < m_spots.size(); ++i){
+    for (unsigned int i = 0; i < m_spots.size(); ++i){
         for (int j = 0; j < 20; ++j){
             if(m_spots[i] == _hits[j]){
                 actual_hits.push_back(m_spots[i]);

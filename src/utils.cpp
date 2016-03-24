@@ -66,7 +66,7 @@ tokenization(string fileName){
     /*INIT KENOBET CLASS*/
     KenoBet keno(m_spots.size(), rounds);
     keno.setWage(aposta);
-    for(int i =0; i<m_spots.size() ; i++){
+    for(unsigned int i =0; i<m_spots.size() ; i++){
 
         keno.addNumber(m_spots[i]);
     }

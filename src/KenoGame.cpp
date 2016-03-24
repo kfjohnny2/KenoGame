@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
     spots = keno.numChosen();
 
     cout << spots << " spots" << endl;
-    for(int i =0; i<vSpots.size() ; i++){
+    for(unsigned int i =0; i<vSpots.size() ; i++){
         cout << vSpots[i] << endl;
     }
 
@@ -84,7 +84,7 @@ int main(int argc, char *argv[]){
         // 3) Sortear 20 números: 'draw'
         quickSort(kenoNumbers,0,20);
         cout << "Números desta rodada [";
-        for (int i = 0; i < 20; ++i)
+        for (unsigned int i = 0; i < 20; ++i)
         {
             cout << kenoNumbers[i] << " ";
         }
@@ -92,7 +92,7 @@ int main(int argc, char *argv[]){
     // 4) Verificar quantos números spots estão em draw;
         vHits = keno.getHits(kenoNumbers);
         cout << "os acertos foram [";
-        for (int i = 0; i < vHits.size(); ++i)
+        for (unsigned int i = 0; i < vHits.size(); ++i)
         {
             cout << vHits[i] << " ";
         }
