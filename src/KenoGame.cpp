@@ -5,28 +5,36 @@
 #include <string.h>
 
 #include "KenoDAO.h"
-#include "utils.cpp"
+#include "utils.h"
 
 using namespace std;
 
-int main(string argc, char const *argv[]){
+int main(int argc, char *argv[]){
 
 	string fileName;
+    std::vector<int> vHits;
 // 1) Validar os argumentos em linha de comando.
 // keno <nome_arquivo_aposta.txt>
-	if(!argc.empty()){
-		fileName = argc;
+	if(argc > 1){
+		fileName = argv[1];
 	}else{
 		cout << "Digite o nome do arquivo de apostas a ser lido" << endl;
 		return -1;
 	}
 
-
 // 2) Tentar abrir aquivo de apostas.
 // 2.1) ler linhas do arquivo - getLine(ifs, string): ifs = inputFileStream
 	//utiliza o método de tokenização para retornar o vector desejado
+
 	KenoBet keno = tokenization(fileName);
-	cout << "Aposta :" << keno.getWage()<< endl;
+
+    cout << "Aposta :" << keno.getWage()<< endl;
+    vHits = keno.getSpots();
+    cout << keno.numChosen() << " rounds" << endl;
+    for(int i =0; i<vHits.size() ; i++){
+        cout << vHits[i] << endl;
+    }
+
 // 2.2) Enquanto não obter float e não acabar o arquivo
 //	 2.2.1) Tentar converter linha para float (credits)
 //	 2.2.2) ler nova linhas

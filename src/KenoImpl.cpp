@@ -52,5 +52,9 @@ KenoBet::getHits(vector<int> & _hits) const{
     //TODO: USAR O TOKENIZADOR AQUI??
 }
 
+std::vector<int>
+KenoBet::getSpots(void) const{
+    return m_spots;
+}
 
 

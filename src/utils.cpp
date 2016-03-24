@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include "KenoDAO.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -23,7 +24,6 @@ enum DataEnum: int16_t
 KenoBet
 tokenization(string a){
     std::string token;
-    cin >> a;
     std::ifstream file(a);
     std::vector<int> m_spots;
     float spots = 0;
@@ -58,6 +58,7 @@ tokenization(string a){
     KenoBet keno(rounds);
     keno.setWage(aposta);
     for(int i =0; i<m_spots.size() ; i++){
+
         keno.addNumber(m_spots[i]);
     }
 
