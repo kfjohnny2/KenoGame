@@ -31,26 +31,27 @@ tokenization(string a){
     unsigned int rounds = 0;
     int cont = 0;
     while(std::getline(file, token)) {
-        std::stringstream line(token);
-        while(line >> token) {
-            switch(cont){
-                case DataEnum::BET:
-                    aposta = atoi(token.c_str());
-                case DataEnum::ROUNDS:
-                    rounds = atoi(token.c_str());
-                case DataEnum::SPOTS:
-                    spots = atoi(token.c_str());
-                    m_spots.insert(m_spots.begin(), spots);
-            }
-          // cout << "token: " << token << endl;
-        }
-        if(file.unget().get() == '\n') {
-            cont ++;
-        //cout << "Nova linha encontrada" << endl;
-        }
+    std::stringstream line(token);
+    while(line >> token) {
+       if (cont == DataEnum::BET){
+       aposta = atoi(token.c_str());
+       }
+       if (cont == DataEnum::ROUNDS){
+       rounds = atoi(token.c_str());
+       }
+       if (cont == DataEnum::SPOTS){
+       spots = atoi(token.c_str());
+       m_spots.insert(m_spots.begin(), spots);
+       }
+      // cout << "token: " << token << endl;
+      }
+    if(file.unget().get() == '\n') {
+       cont ++;
+    //cout << "Nova linha encontrada" << endl;
+      }
         if (cont > 2){
-            break;
-        }
+           break;
+      }
     }
     file.close();
 
@@ -64,3 +65,4 @@ tokenization(string a){
 
     return keno;
 }
+

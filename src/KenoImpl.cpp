@@ -13,8 +13,9 @@ using namespace std;
 
 bool
 KenoBet::addNumber( int _spot){
-    if( std::find(m_spots.begin(), m_spots.end(), _spot) != m_spots.end()){
-        m_spots.insert(m_spots.end(), _spot);
+    if(std::find(m_spots.begin(), m_spots.end(), _spot) == m_spots.end()){
+        // m_spots.insert(m_spots.end(), _spot);
+        m_spots.push_back(_spot);
         return true;
     } else{
         return false;

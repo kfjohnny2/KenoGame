@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
 
     cout << "Aposta :" << keno.getWage()<< endl;
     vHits = keno.getSpots();
-    cout << keno.numChosen() << " rounds" << endl;
+    cout << keno.numChosen() << " spots" << endl;
     for(int i =0; i<vHits.size() ; i++){
         cout << vHits[i] << endl;
     }
