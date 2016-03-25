@@ -38,31 +38,34 @@ tokenization(string a){
     float aposta=0;
     unsigned int rounds = 0;
     int cont = 0;
-    while(std::getline(file, token)) {
-    std::stringstream line(token);
+    int spotsCount = 0;
+    while(std::getline(file, token)) { /* while exist line, !=null */
+    std::stringstream line(token); /* extract the value for the variable */
     while(line >> token) {
-       if (cont == DataEnum::BET){
+       if (cont == DataEnum::BET){ /* converts the value of the string for the variable wage */
        aposta = atoi(token.c_str());
-        if (aposta == 0)
+        if (aposta == 0) /* decrements cont because the value is invalid  */
             cont --;
        }
-       if (cont == DataEnum::ROUNDS){
+       if (cont == DataEnum::ROUNDS){ /* converts the value of the string for the variable rounds */
        rounds = atoi(token.c_str());
-       if (rounds == 0)
+       if (rounds == 0) /* decrements cont because the value is invalid  */
             cont --;
        }
-       if (cont == DataEnum::SPOTS){
-       spots = atoi(token.c_str());
-       if ((spots != 0) && (spots>0) && (spots<=80))
-       m_spots.insert(m_spots.begin(), spots);
+       if (cont == DataEnum::SPOTS){ /*converts the value of the string for the variable spots */
+            spots = atoi(token.c_str());
+           if ((spots != 0) && (spots>0) && (spots<=80) && spotsCount < 15){ /* verification of the shelf life variable spots  */
+                m_spots.insert(m_spots.begin(), spots);
+                spotsCount++;
+           }
        }
       // cout << "token: " << token << endl;
-      }
-    if(file.unget().get() == '\n') {
+    }
+    if(file.unget().get() == '\n') { /* Detection new lines */
        cont ++;
     //cout << "Nova linha encontrada" << endl;
       }
-        if (cont > 2){
+        if (cont > 2){ /* stop if exist three lines */
            break;
       }
     }
@@ -71,7 +74,7 @@ tokenization(string a){
     /*INIT KENOBET CLASS*/
     KenoBet keno(m_spots.size(), rounds);
     keno.setWage(aposta);
-    for(int i =0; i<m_spots.size() ; i++){
+    for(unsigned int i =0; i<m_spots.size() ; i++){
 
         keno.addNumber(m_spots[i]);
     }
@@ -112,11 +115,19 @@ void quickSort(std::vector<int>& v, int left, int right) {
 
 }
 
+/**
+ * @brief Method that is used for print the vector.
+ *
+ * @param v Vector that will be print.
+ * @param sz size of the vector.
+ *
+ */
 void printArray(std::vector<int> v, unsigned int sz){
     cout << "[";
     for (unsigned int i = 0; i < sz; ++i)
     {
         cout << v[i] << " ";
     }
-    cout<< "]" << endl;
+    cout<< "]";
 }
+
