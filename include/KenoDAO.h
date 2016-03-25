@@ -23,8 +23,10 @@ class KenoBet{
 		*
 		*/
 		explicit KenoBet( unsigned int _maxNumSpots = 15, unsigned int _rounds = 1){
-			m_maxSpots = _maxNumSpots;
-			m_rounds = _rounds;
+			if(_maxNumSpots <= 15){
+				m_maxSpots = _maxNumSpots;
+				m_rounds = _rounds;
+			}
 		}
 		/**
 		 * @brief Adds a number to the spots only if the number is not already there.

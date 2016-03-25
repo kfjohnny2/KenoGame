@@ -20,6 +20,7 @@ KenoBet::addNumber( int _spot){
         m_spots.push_back(_spot);
         return true;
     } else{
+        m_maxSpots++;
         return false;
     }
 }

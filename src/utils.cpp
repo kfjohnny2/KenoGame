@@ -35,29 +35,42 @@ tokenization(string a){
     std::ifstream file(a);
     std::vector<int> m_spots;
     float spots = 0;
-    float aposta=0;
+    float wage=0;
     unsigned int rounds = 0;
     int cont = 0;
     int spotsCount = 0;
+    float wAux=0;
+    float roundAux=0;
     while(std::getline(file, token)) { /* while exist line, !=null */
     std::stringstream line(token); /* extract the value for the variable */
     while(line >> token) {
        if (cont == DataEnum::BET){ /* converts the value of the string for the variable wage */
-       aposta = atoi(token.c_str());
-        if (aposta == 0) /* decrements cont because the value is invalid  */
-            cont --;
+          wAux = atoi(token.c_str());
+          if (wAux == 0){
+
+          } /* decrements cont because the value is invalid  */
+          else
+            wage = wAux;
+                //cont --;
        }
        if (cont == DataEnum::ROUNDS){ /* converts the value of the string for the variable rounds */
-       rounds = atoi(token.c_str());
-       if (rounds == 0) /* decrements cont because the value is invalid  */
-            cont --;
+        roundAux = atoi(token.c_str());
+        if (roundAux == 0){
+
+        }
+        else
+          rounds = roundAux;
+          // cont --;
        }
        if (cont == DataEnum::SPOTS){ /*converts the value of the string for the variable spots */
-            spots = atoi(token.c_str());
-           if ((spots != 0) && (spots>0) && (spots<=80) && spotsCount < 15){ /* verification of the shelf life variable spots  */
-                m_spots.insert(m_spots.begin(), spots);
-                spotsCount++;
-           }
+          spots = atoi(token.c_str());
+          if(spots == 0){/* check if some error were find and don't insert in the vector*/
+
+          }
+          if ((spots>0) && (spots<=80) && spotsCount < 15){ /* verification of the shelf life variable spots  */
+              m_spots.insert(m_spots.begin(), spots);
+              spotsCount++;
+          }
        }
       // cout << "token: " << token << endl;
     }
@@ -73,7 +86,7 @@ tokenization(string a){
 
     /*INIT KENOBET CLASS*/
     KenoBet keno(m_spots.size(), rounds);
-    keno.setWage(aposta);
+    keno.setWage(wage);
     for(unsigned int i =0; i<m_spots.size() ; i++){
 
         keno.addNumber(m_spots[i]);

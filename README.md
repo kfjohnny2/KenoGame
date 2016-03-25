@@ -30,7 +30,7 @@ The game can be played normally
 
 # For a better gameplay
 
-Don't put all the information in one single line of the ".txt" file, that will not be good for the play.
+Don't put all the information in one single line of the ".txt" file and dont begin the bet line or the rounds line with letters, that will not be good for the play.
 
 ##HAVE FUN!
 

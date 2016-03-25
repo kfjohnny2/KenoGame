@@ -102,7 +102,6 @@ int main(int argc, char *argv[]){
 
     cout << ">>> Bet succesfully read!\n" << "    You are going to wage a total of $"<< wageBegin <<" dollars.\n" << "    Going for a total of " << rounds << ", waging $" << wagePerRound << " per round." << endl;
     cout << "\n\n";
-
     cout << "    Your bet has " << vSpots.size() << " numbers. They are: " ;
     printArray(vSpots, vSpots.size());
     cout << endl;
