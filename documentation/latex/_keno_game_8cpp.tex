@@ -1,0 +1,147 @@
+\hypertarget{_keno_game_8cpp}{}\section{Keno\+Game.\+cpp File Reference}
+\label{_keno_game_8cpp}\index{Keno\+Game.\+cpp@{Keno\+Game.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$chrono$>$}\\*
+{\ttfamily \#include \char`\"{}Keno\+D\+A\+O.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_keno_game_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Keno\+Game.\+cpp@{Keno\+Game.\+cpp}!main@{main}}
+\index{main@{main}!Keno\+Game.\+cpp@{Keno\+Game.\+cpp}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$argv[])}{main(int argc, char *argv[])}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{_keno_game_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{_keno_game_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+Declaration of the global variables used in the game.
+
+Verification of the file name.
+
+Vector that containing all possible numbers.
+
+Vector that containing all forms of multiply the hits .
+
+Allocation of class methods in the global variables.
+
+Start the game 
+
+Definition at line 19 of file Keno\+Game.\+cpp.
+
+
+\begin{DoxyCode}
+19                                 \{
+26     \textcolor{keywordtype}{string} fileName;
+27     std::vector<int> vSpots;
+28     std::vector<int> vHits;
+29     \textcolor{keywordtype}{int} rounds;
+30     \textcolor{keywordtype}{int} spots;
+31     \textcolor{keywordtype}{float} wageTotal=0;
+32     \textcolor{keywordtype}{float} wageBegin;
+33     \textcolor{keywordtype}{float} valueReceived;
+34     \textcolor{keywordtype}{float} wagePerRound;
+41     \textcolor{keywordflow}{if}(argc > 1)\{
+42         fileName = argv[1];
+43     \}\textcolor{keywordflow}{else}\{
+44         cout << \textcolor{stringliteral}{"ERROR! Enter the Data file name that you want to be read!"} << endl;
+45         \textcolor{keywordflow}{return} -1;
+46     \}
+53     std::vector<int> kenoNumbers = \{1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18,
+       19, 20,
+54                21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+55                41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+56                61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80\};
+63     std::vector<std::vector<float>> betPyramid = \{
+64         \{0,3\},
+65         \{0,1,9\},
+66         \{0,1,2,16\},
+67         \{0,0.5,2,6,12\},
+68         \{0,0.5,1,3,15,50\},
+69         \{0,0.5,1,2,3,30,75\},
+70         \{0,0.5,0.5,1,6,12,36,100\},
+71         \{0,0.5,0.5,1,3,6,19,90,720\},
+72         \{0,0.5,0.5,1,2,4,8,20,80,1200\},
+73         \{0,0,0.5,1,2,3,5,10,30,600,1800\},
+74         \{0,0,0.5,1,1,2,6,15,25,180,1000,3000\},
+75         \{0,0,0,0.5,1,2,4,24,72,250,500,2000,4000\},
+76         \{0,0,0,0.5,0.5,3,4,5,20,80,240,500,3000,6000\},
+77         \{0,0,0,0.5,0.5,2,3,5,12,50,150,500,1000,2000,7500\},
+78         \{0,0,0,0.5,0.5,1,2,5,15,50,150,300,600,1200,2500,10000\}
+79     \};
+87     cout << \textcolor{stringliteral}{">>> Preparing to read bet file "} <<  fileName << \textcolor{stringliteral}{", please wait..."} << endl;
+88     cout << \textcolor{stringliteral}{"----------------------------------------------------------------"} << endl;
+89     \hyperlink{class_keno_bet}{KenoBet} keno = \hyperlink{utils_8cpp_a561e23bfb4d367834cfb34759ba2086a}{tokenization}(fileName);
+90     wageBegin = keno.\hyperlink{class_keno_bet_a004aae494dff90ba8b97e0d2f422de60}{getWage}();
+91     vSpots = keno.\hyperlink{class_keno_bet_a219a00440238516ab80f4471dd84f812}{getSpots}();
+92     rounds = keno.\hyperlink{class_keno_bet_adaa1b0402eac5f526c4bba76decb6385}{getRounds}();
+93     spots = keno.\hyperlink{class_keno_bet_a65f3e4d2710ab66a410a0432b5988c24}{numChosen}();
+94     wagePerRound = (wageBegin/rounds);
+95 
+96 
+97     \textcolor{keywordflow}{if}(keno.\hyperlink{class_keno_bet_a004aae494dff90ba8b97e0d2f422de60}{getWage}() == 0 || keno.\hyperlink{class_keno_bet_a65f3e4d2710ab66a410a0432b5988c24}{numChosen}() == 0 || vSpots.size() == 0)\{
+98         cout << \textcolor{stringliteral}{"Invalid BET! See your Bet file to find the error!"} << endl;
+99         \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+100     \}
+101 
+102     cout << \textcolor{stringliteral}{">>> Bet succesfully read!\(\backslash\)n"} << \textcolor{stringliteral}{"    You are going to wage a total of $"}<< wageBegin <<\textcolor{stringliteral}{"
+       dollars.\(\backslash\)n"} << \textcolor{stringliteral}{"    Going for a total of "} << rounds << \textcolor{stringliteral}{", waging $"} << wagePerRound << \textcolor{stringliteral}{" per round."} << endl;
+103     cout << \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};
+104 
+105     cout << \textcolor{stringliteral}{"    Your bet has "} << vSpots.size() << \textcolor{stringliteral}{" numbers. They are: "};
+106     \hyperlink{utils_8cpp_a11b8055bef9a67fb6d9fac3ba365b14f}{printArray}(vSpots, vSpots.size());
+107 
+108     cout << \textcolor{stringliteral}{"\(\backslash\)t -------+------------"} << endl;
+109     cout << \textcolor{stringliteral}{"\(\backslash\)t Hits   | Payout"} << endl;
+110     cout << \textcolor{stringliteral}{"\(\backslash\)t -------+------------"} << endl;
+111     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < spots; ++i)
+112     \{
+113     cout << \textcolor{stringliteral}{"\(\backslash\)t "}<< i <<\textcolor{stringliteral}{"      |"}<<betPyramid[spots][i]<<\textcolor{stringliteral}{"           "} << endl;
+114     \}
+115     cout << \textcolor{stringliteral}{"\(\backslash\)n"};
+116 
+118     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < rounds; ++i)
+119     \{
+120         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} randomSeed = std::chrono::system\_clock::now().time\_since\_epoch().count(); \textcolor{comment}{/* Define
+       random numbers */}
+121         std::shuffle(kenoNumbers.begin(), kenoNumbers.end(), std::default\_random\_engine(randomSeed)); \textcolor{comment}{/*
+       Shuffle random numbers  */}
+122         \textcolor{comment}{// 3) Sortear 20 números: 'draw'}
+123         \hyperlink{utils_8cpp_a763d8f8a1932e0f8220043fda2b688c7}{quickSort}(kenoNumbers,0,20); \textcolor{comment}{/*Sort random numbers */}
+124 
+125         \hyperlink{utils_8cpp_a11b8055bef9a67fb6d9fac3ba365b14f}{printArray}(kenoNumbers, 20); \textcolor{comment}{/*Print chosen numbers  */}
+126 
+127 
+128         vHits = keno.\hyperlink{class_keno_bet_a536eff08ad4d479872bf9ffcfe6728dc}{getHits}(kenoNumbers); \textcolor{comment}{/*Found hits */}
+129         cout << \textcolor{stringliteral}{"Your hits in this rounds were "};
+130         \hyperlink{utils_8cpp_a11b8055bef9a67fb6d9fac3ba365b14f}{printArray}(vHits, vHits.size()); \textcolor{comment}{/*Print hits */}
+131         cout << \textcolor{stringliteral}{"Seu saldo nessa rodada é: "} << wagePerRound << endl;
+132         cout << \textcolor{stringliteral}{"Agora, seu numero de acertos é: "} << vHits.size() << endl;
+133         cout << \textcolor{stringliteral}{"Agora, a quantidade de numeros que apostou foi: "} <<  vSpots.size() << endl;
+134         cout << \textcolor{stringliteral}{"Agora, vamos multiplicar por: "} << betPyramid[vSpots.size()][vHits.size()] << endl;
+135 
+136         valueReceived = ( wagePerRound * betPyramid[vSpots.size()][vHits.size()]); \textcolor{comment}{/*Calculates whether the
+       player won or lost in the round*/}
+137         cout << \textcolor{stringliteral}{"Agora, seu novo saldo nessa rodada é: "} << valueReceived << endl;
+138         wageTotal = wageTotal + valueReceived; \textcolor{comment}{/*Calculate how much the player has at the end of the game 
+      */}
+139         keno.\hyperlink{class_keno_bet_a496aac2de78b82948d83e9c75f464196}{setWage}(wageTotal);
+140     \}
+141     cout << \textcolor{stringliteral}{"Seu saldo total é: "} << wageTotal << endl;
+142 
+143     \textcolor{comment}{/*Frees memory*/}
+144     vHits.clear();
+145     kenoNumbers.clear();
+146     betPyramid.clear();
+147     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+148 \}
+\end{DoxyCode}

@@ -1,0 +1,204 @@
+\hypertarget{utils_8h}{}\section{utils.\+h File Reference}
+\label{utils_8h}\index{utils.\+h@{utils.\+h}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$cstring$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utils_8h_a6a63cf15363b965ba0233f51b664e29f}{\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_keno_bet}{Keno\+Bet} \hyperlink{utils_8h_a5b29ccb13bec8050eb1e1e7123bab467}{tokenization} (string)
+\begin{DoxyCompactList}\small\item\em Method that will receive the file from the command line. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8h_a51e818a308943507b194e1828bb24cc1}{quick\+Sort} (std\+::vector$<$ int $>$ \&, int, int)
+\begin{DoxyCompactList}\small\item\em Method that is used for sort the vector with 20 random numbers. \end{DoxyCompactList}\item 
+void \hyperlink{utils_8h_a11b8055bef9a67fb6d9fac3ba365b14f}{print\+Array} (std\+::vector$<$ int $>$ v, unsigned int sz)
+\begin{DoxyCompactList}\small\item\em Method that is used for print the vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{utils.\+h@{utils.\+h}!\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+@{\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+}}
+\index{\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+@{\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+}!utils.\+h@{utils.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+}{_TOKEN_H_}}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+T\+O\+K\+E\+N\+\_\+\+H\+\_\+}\hypertarget{utils_8h_a6a63cf15363b965ba0233f51b664e29f}{}\label{utils_8h_a6a63cf15363b965ba0233f51b664e29f}
+
+
+Definition at line 12 of file utils.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{utils.\+h@{utils.\+h}!print\+Array@{print\+Array}}
+\index{print\+Array@{print\+Array}!utils.\+h@{utils.\+h}}
+\subsubsection[{\texorpdfstring{print\+Array(std\+::vector$<$ int $>$ v, unsigned int sz)}{printArray(std::vector< int > v, unsigned int sz)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Array (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$}]{v, }
+\item[{unsigned int}]{sz}
+\end{DoxyParamCaption}
+)}\hypertarget{utils_8h_a11b8055bef9a67fb6d9fac3ba365b14f}{}\label{utils_8h_a11b8055bef9a67fb6d9fac3ba365b14f}
+
+
+Method that is used for print the vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vector that will be print. \\
+\hline
+{\em sz} & size of the vector. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 127 of file utils.\+cpp.
+
+
+\begin{DoxyCode}
+127                                                   \{
+128     cout << \textcolor{stringliteral}{"["};
+129     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < sz; ++i)
+130     \{
+131         cout << v[i] << \textcolor{stringliteral}{" "};
+132     \}
+133     cout<< \textcolor{stringliteral}{"]"} << endl;
+134 \}
+\end{DoxyCode}
+\index{utils.\+h@{utils.\+h}!quick\+Sort@{quick\+Sort}}
+\index{quick\+Sort@{quick\+Sort}!utils.\+h@{utils.\+h}}
+\subsubsection[{\texorpdfstring{quick\+Sort(std\+::vector$<$ int $>$ \&, int, int)}{quickSort(std::vector< int > &, int, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void quick\+Sort (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$ \&}]{v, }
+\item[{int}]{left, }
+\item[{int}]{right}
+\end{DoxyParamCaption}
+)}\hypertarget{utils_8h_a51e818a308943507b194e1828bb24cc1}{}\label{utils_8h_a51e818a308943507b194e1828bb24cc1}
+
+
+Method that is used for sort the vector with 20 random numbers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vector that will be sorted. \\
+\hline
+{\em left} & Left side of the vector. \\
+\hline
+{\em right} & Most right side of the vector. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 93 of file utils.\+cpp.
+
+
+\begin{DoxyCode}
+93                                                        \{
+94       \textcolor{keywordtype}{int} i = left, j = right;
+95       \textcolor{keywordtype}{int} tmp;
+96       \textcolor{keywordtype}{int} pivot = v[(left + right) / 2];
+97       \textcolor{comment}{/* partition */}
+98       \textcolor{keywordflow}{while} (i <= j) \{
+99             \textcolor{keywordflow}{while} (v[i] < pivot)
+100                   i++;
+101             \textcolor{keywordflow}{while} (v[j] > pivot)
+102                   j--;
+103             \textcolor{keywordflow}{if} (i <= j) \{
+104                   tmp = v[i];
+105                   v[i] = v[j];
+106                   v[j] = tmp;
+107                   i++;
+108                   j--;
+109             \}
+110       \};
+111       \textcolor{comment}{/* recursion */}
+112       \textcolor{keywordflow}{if} (left < j)
+113             \hyperlink{utils_8cpp_a763d8f8a1932e0f8220043fda2b688c7}{quickSort}(v, left, j);
+114       \textcolor{keywordflow}{if} (i < right)
+115             \hyperlink{utils_8cpp_a763d8f8a1932e0f8220043fda2b688c7}{quickSort}(v, i, right);
+116 
+117 \}
+\end{DoxyCode}
+\index{utils.\+h@{utils.\+h}!tokenization@{tokenization}}
+\index{tokenization@{tokenization}!utils.\+h@{utils.\+h}}
+\subsubsection[{\texorpdfstring{tokenization(string)}{tokenization(string)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Keno\+Bet} tokenization (
+\begin{DoxyParamCaption}
+\item[{string}]{a}
+\end{DoxyParamCaption}
+)}\hypertarget{utils_8h_a5b29ccb13bec8050eb1e1e7123bab467}{}\label{utils_8h_a5b29ccb13bec8050eb1e1e7123bab467}
+
+
+Method that will receive the file from the command line. 
+
+That method, will construct the \hyperlink{class_keno_bet}{Keno\+Bet} class with the data from the file read, like the number of rounds, the bets and the wage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Filename that will be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_keno_bet}{Keno\+Bet} The Keno Object with the data from the file read. 
+\end{DoxyReturn}
+
+
+Definition at line 37 of file utils.\+cpp.
+
+
+\begin{DoxyCode}
+37                       \{
+38     std::string token;
+39     std::ifstream file(a);
+40     std::vector<int> m\_spots;
+41     \textcolor{keywordtype}{float} spots = 0;
+42     \textcolor{keywordtype}{float} \_wage=0;
+43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} rounds = 0;
+44     \textcolor{keywordtype}{int} cont = 0;
+45     \textcolor{keywordflow}{while}(std::getline(file, token)) \{ \textcolor{comment}{/* while exist line, !=null */}
+46     std::stringstream line(token); \textcolor{comment}{/* extract the value for the variable */}
+47     \textcolor{keywordflow}{while}(line >> token) \{
+48        \textcolor{keywordflow}{if} (cont == \hyperlink{utils_8cpp_a01daf5fcc5e890b2f40647687389a879a6e37681e9042d59bf8a6a11e4e6c9a35}{DataEnum::BET})\{ \textcolor{comment}{/* converts the value of the string for the variable wage 
+      */}
+49        \_wage = atoi(token.c\_str());
+50         \textcolor{keywordflow}{if} (\_wage == 0) \textcolor{comment}{/* decrements cont because the value is invalid  */}
+51             cont --;
+52        \}
+53        \textcolor{keywordflow}{if} (cont == \hyperlink{utils_8cpp_a01daf5fcc5e890b2f40647687389a879a72a940817817ada9d5c9c1b52b85e81f}{DataEnum::ROUNDS})\{ \textcolor{comment}{/* converts the value of the string for the variable
+       rounds */}
+54        rounds = atoi(token.c\_str());
+55        \textcolor{keywordflow}{if} (rounds == 0) \textcolor{comment}{/* decrements cont because the value is invalid  */}
+56             cont --;
+57        \}
+58        \textcolor{keywordflow}{if} (cont == \hyperlink{utils_8cpp_a01daf5fcc5e890b2f40647687389a879aa6f9cf6dfdc92da6cdea768f67b01421}{DataEnum::SPOTS})\{ \textcolor{comment}{/*converts the value of the string for the variable
+       spots */}
+59        spots = atoi(token.c\_str());
+60        \textcolor{keywordflow}{if} ((spots != 0) && (spots>0) && (spots<=80)) \textcolor{comment}{/* verification of the shelf life variable spots  */}
+61        m\_spots.insert(m\_spots.begin(), spots);
+62        \}
+63       \textcolor{comment}{// cout << "token: " << token << endl;}
+64       \}
+65     \textcolor{keywordflow}{if}(file.unget().get() == \textcolor{charliteral}{'\(\backslash\)n'}) \{ \textcolor{comment}{/* Detection new lines */}
+66        cont ++;
+67     \textcolor{comment}{//cout << "Nova linha encontrada" << endl;}
+68       \}
+69         \textcolor{keywordflow}{if} (cont > 2)\{ \textcolor{comment}{/* stop if exist three lines */}
+70            \textcolor{keywordflow}{break};
+71       \}
+72     \}
+73     file.close();
+74 
+75     \textcolor{comment}{/*INIT KENOBET CLASS*/}
+76     \hyperlink{class_keno_bet}{KenoBet} keno(m\_spots.size(), rounds);
+77     keno.\hyperlink{class_keno_bet_a496aac2de78b82948d83e9c75f464196}{setWage}(aposta);
+78     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i =0; i<m\_spots.size() ; i++)\{
+79 
+80         keno.addNumber(m\_spots[i]);
+81     \}
+82 
+83     \textcolor{keywordflow}{return} keno;
+84 \}
+\end{DoxyCode}
